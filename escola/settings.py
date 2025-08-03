@@ -137,10 +137,10 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 2,
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle',
+        #'rest_framework.throttling.UserRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '2/minute', #second, day, montyh, year
-        'user': '3/minute'
+        #'user': '3/minute'
     }
 }
