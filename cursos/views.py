@@ -46,12 +46,11 @@ class CursoViewSet(viewsets.ModelViewSet):
 
   # Permissões
   # permission_classes = [permissions.DjangoModelPermissions]
-  permission_classes = [EhSuperUsuario, permissions.DjangoModelPermissions]
+  permission_classes = (EhSuperUsuario, permissions.DjangoModelPermissions,)
 
 
   @action(detail=True, methods=['get'])
   def avaliacoes(self, request, pk=None):
-    #curso = self.get_object()
 
     #Pagination
     self.pagination_class.page_size = 1
@@ -66,15 +65,14 @@ class CursoViewSet(viewsets.ModelViewSet):
     return Response(serializer.data)
 
 #VIEWSET PADRAO
-
+'''
 class AvaliacaoViewSet(viewsets.ModelViewSet):
   queryset = Avaliacao.objects.all()
   serializer_class = AvaliacaoSerializer
-
+'''
 
 # VIEWSET PERSONALIZADO
-'''
-class AvaliacaoViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+
+class AvaliacaoViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
   queryset = Avaliacao.objects.all()
   serializer_class = AvaliacaoSerializer
-'''
